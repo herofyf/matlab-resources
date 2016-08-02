@@ -1,0 +1,42 @@
+>> syms t;
+>> y = int(t^2) % Calculate integral of x; it should be t^3/3.
+
+y =
+
+t^3/3
+
+>> x = 1:10; % same as x = [1:1:10]            
+>> subs(y, 't', x)   
+
+ans =
+
+  Columns 1 through 7
+
+    0.3333    2.6667    9.0000   21.3333   41.6667   72.0000  114.3333
+
+  Columns 8 through 10
+
+  170.6667  243.0000  333.3333
+
+
+>> y = int(t^2);      
+
+%%   当前 y 实际上变成了一个函数，t为参数
+>> y = @(t) subs(y, 't', t); % the 't^3/3' value of y gets bound into the anonymous function
+>> y(x)
+
+ans =
+
+  Columns 1 through 7
+
+    0.3333    2.6667    9.0000   21.3333   41.6667   72.0000  114.3333
+
+  Columns 8 through 10
+
+  170.6667  243.0000  333.3333
+
+>> y(2)
+
+ans =
+
+    2.6667
